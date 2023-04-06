@@ -1,0 +1,16 @@
+USER MODEL
+--------------------------
+email: string -- uniquue in the db no two users can have the same email findOrCreate() if the useer is found they are routed to log in page
+password: string --  VARCHAR(255) and the text will be hashed in the database
+userName: string -- VARCHAR(255)
+
+
+
+sequelize model:create --name user --attributes email:string,password:string,userName:string
+
+# if you want to add more columns for your p2
+1. sequelize db:migrate:undo:all -- remove user table in db 
+2. options:
+    a. edit both the user model and user migrations to add columns 
+    b. rm models/user.js migrations/<the user imgrations>.js, rerun new model create command
+

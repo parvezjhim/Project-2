@@ -20,6 +20,12 @@ POC:
 ## ERDs
 ![ERD](./ERD.png)
 
+## RESTful routes
+
+![usersmodel](./usersmodel.png)
+![animalsmodel](./animalsmodel.png)
+![commentsmodel](./commentsmodel.png)
+
 
 
 ## WIREFRAMES

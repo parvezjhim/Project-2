@@ -56,13 +56,46 @@ router.get('/login', (req, res)=>{
 })
 
 //POST /user/login -- authenticate a user's credentials 
-router.post('/login', (req, res)=>{
-    res.send('verify credentials that are given by the user to log in')
+router.post('/login', async (req, res)=>{
+    try{
+        // search for the user's email in the db 
+        const foundUser = await db.user.findOne({
+            where:{
+                email: req.body.email
+            }
+        })
+        const failedLoginMessage = 'Incorrect email or password'
+
+        if(!foundUser){
+            // if the user's email is not found -- do not let them login
+            res.redirect('/users/login?message=' + failedLoginMessage)
+        } else if(!bcrypt.compareSync(req.body.password, foundUser.password)){
+            console.log('incorrect password')
+            // if the user exists but they have the wrong password -- do not let them login
+            res.redirect('/users/login?message=' + failedLoginMessage)
+
+        } else {
+            // if the user exists, they know the right pass word -- log them in
+            const encryptedPk = cryptoJs.AES.encrypt(foundUser.id.toString(), process.env.ENC_KEY)
+            //set encrypted id as a cookie 
+            res.cookie('userId', encryptedPk.toString())
+            // redirect the user 
+            res.redirect('/users/profile')
+           
+
+        }
+
+    }catch(err){
+        console.log(err)
+        res.redirect('/')
+    }
 })
 
 // GET /users/logout -- log out the current user 
 router.get('/logout', (req, res)=>{
-    res.send('log a user out')
+    console.log('logging user out ')
+    res.clearCookie('userId')
+    res.redirect('/')
 })
 
 

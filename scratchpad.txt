@@ -14,3 +14,8 @@ sequelize model:create --name user --attributes email:string,password:string,use
     a. edit both the user model and user migrations to add columns 
     b. rm models/user.js migrations/<the user imgrations>.js, rerun new model create command
 
+
+curl -d "grant_type=client_credentials&client_id=WQdoenR5rS0zAP40HzU4ZM8CLm0FI8F2ZoWQ3QzJ50fpPhC2Ad&client_secret=Yi49YezgXhDsmJC6inVvqe21EznQ53BXxcAZiqsi" https://api.petfinder.com/v2/oauth2/token
+
+
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJXUWRvZW5SNXJTMHpBUDQwSHpVNFpNOENMbTBGSThGMlpvV1EzUXpKNTBmcFBoQzJBZCIsImp0aSI6ImE1YTNlZjlmM2VlZDkyMTNhZDU0NDVhYzIyZmVhYjEwNTMzN2Y4M2FlYjk4Mzg4YjJlZTBmOTI3NDlkOTU5ODA5MGJmYzY2NTgzMjRhNzk4IiwiaWF0IjoxNjgwODI1Nzk1LCJuYmYiOjE2ODA4MjU3OTUsImV4cCI6MTY4MDgyOTM5NSwic3ViIjoiIiwic2NvcGVzIjpbXX0.oDkwscrTCVUbILPYFbFou9UA0sAp5p7vF_oCaAFYXCpxLmgX4CL6SlCH8eJHA0QKspOoArwivrzs_pgLM2SuDttaJuOKfAy1Of9kds-sO4EKghuDteU2YuFxnl3e4AfWZWbZzx3t1FLl81p5xGGHT4JDganS6JkDByIGWE4fYWtHRIF0_OETeBYPcfrhfZNOyN1WXcSFzR4xxtOZt5112mUQNz3AA-el9UKhSA9bw__qC0TEiFqCniRuHiNtbVQZu1BQ9xnXgDh4Ymbasn08gjsePi8GP1ksD3pjwqCOxYFKhyz_Up0atyYSc6DPuXqhzvB4KY2whYqBfBLahFPrxg" https://api.petfinder.com/v2/animals?type=dog&page=2

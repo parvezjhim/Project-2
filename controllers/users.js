@@ -101,7 +101,16 @@ router.get('/logout', (req, res)=>{
 
 //GET /users/profile -- show authorized users their profile page
 router.get('/profile', (req, res)=>{
-    res.send('show the currently logged in user their personal profile page ')
+    // if the user comes here and is not logged in -- they lack authoriazation 
+    if(!res.locals.user){
+        // redirect them to the login
+        res.redirect('/users/login?message="You are not authroized to view that page. Please authenticate to continue')
+    } else{
+        // if they are allowed to be here, show them their profile 
+        res.render('users/profile.ejs')
+
+    }
+
 })
 
 

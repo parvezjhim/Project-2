@@ -29,7 +29,11 @@ POC:
 
 
 ## WIREFRAMES
-
+![login](./login.png)
+![homepage](./homepage.png)
+![profile](./profile.png)
+![animalspage](./animalspage.png)
+![animaldetails](./animaldetails.png)
 
 
 ## MVP GOALS

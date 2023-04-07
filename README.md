@@ -55,7 +55,7 @@ This application uses some npm packages to make it run. Below are the instructio
 
 Run npm i to install all necesssary packages
 
-Packages:
+# Packages:
 - express
 - pg
 - sequelize

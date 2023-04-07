@@ -48,3 +48,18 @@ POC:
 - Include some kind of teleconferincing service within the app so you can have a teleconference with your potential adoptive pet if you are far away 
 - Include a page where you can donate to shelters
 - I would like to make it more of a social experience so the dog's, cats and what have you get the chance to shine and so do the shelters
+
+## IMPORTANT INSTALL INFORMATION
+
+This application uses some npm packages to make it run. Below are the instructions for installing all necessary and all packages that are being used.
+
+Run npm i to install all necesssary packages
+
+Packages:
+- express
+- pg
+- sequelize
+- ejs
+- bcrypt
+- cryptojs
+- dotenv

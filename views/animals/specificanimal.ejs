@@ -1,0 +1,20 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="animal-photo">
+  <img src="<%= animal.photos[0].large %>">
+</div>
+
+<div class="animal-description">
+  <h1><%= animal.name %></h1>
+  <ul>
+    <li>Age: <%= animal.age %></li>
+    <li>Species: <%= animal.species %></li>
+    <li>Breed: <%= animal.breeds.primary %></li>
+    <li>Description: <%= animal.description %></li>
+    <li>Contact Email: <%= animal.contact.email %></li>
+    <li>Contact Phone: <%= animal.contact.phone %></li>
+    <li>Contact City: <%= animal.contact.address.city %></li>
+    <li>Contact Postcode: <%= animal.contact.address.postcode %></li>
+  </ul>
+
+  <%- include("../partials/footer.ejs") %>

@@ -7,16 +7,16 @@ const cryptoJs = require('crypto-js')
 const axios = require('axios')
 
 
-router.get('/animals', (req, res)=>{
+router.get('/', (req, res)=>{
     try{
-        res.render('../views/animals.ejs')
+        res.render('views/animals.ejs')
     } catch(err){
         console.log(err)
         res.send(err)
     }
 })
 
-router.post('/animals', async (req, res)=>{
+router.post('/', async (req, res)=>{
     try {
         const { zipCode, species, breed } = req.body
         const tokenResponse = await axios.get('https://api.petfinder.com/v2/oauth2/token', {
@@ -39,8 +39,8 @@ router.post('/animals', async (req, res)=>{
       }
     })
     
-router.get('/animals/:species', (req, res)=>{
-    res.send('view one specific species')
+router.get('/:id', (req, res)=>{
+    res.render('./specificanimal.ejs')
 })
 
 router.get('/users/:userId/animals', (req, res)=>{

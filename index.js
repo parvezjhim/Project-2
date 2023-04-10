@@ -52,7 +52,6 @@ app.use(async (req, res, next)=>{
     }
 })
 
-
 // routes and controllers
 app.get('/', (req, res)=>{
     console.log(res.locals)
@@ -61,7 +60,11 @@ app.get('/', (req, res)=>{
     })
 })
 
+
+
 app.use('/users', require('./controllers/users.js'))
+app.use('/animals', require('./controllers/animals'))
+app.use('/comments', require('./controllers/comments'))
 
 
 //listen on a port

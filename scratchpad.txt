@@ -8,7 +8,11 @@ userName: string -- VARCHAR(255)
 
 sequelize model:create --name user --attributes email:string,password:string,userName:string
 
-sequelize model:create --name animals --attributes 
+sequelize model:create --name animals --attributes name:string,age:integer,gender:string,fixed:boolean,description:string,species:string,breed:string,shelter_email:string,size:string,comment:string,userId:integer
+
+sequelize model:create --name comment --attributes animalsId:integer,userId:integer,name:string,comment:string
+
+sequelize model:create --name users_animals --attributes userId:integer,animalId:integer
 
 # if you want to add more columns for your p2
 1. sequelize db:migrate:undo:all -- remove user table in db 

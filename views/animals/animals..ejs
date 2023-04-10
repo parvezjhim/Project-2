@@ -1,0 +1,32 @@
+<%- include("../partials/header.ejs") %>
+
+<h1>Search for adoptable animals in your area </h1>
+<!-- users will be able to search based on different variables -->
+
+<form method="POST" action="/animals">
+    <div>
+      <label for="zipCode">Zip code:</label>
+      <input type="text" id="zipCode" name="zipCode" required>
+    </div>
+    <div>
+      <label for="species">Species:</label>
+      <select id="species" name="species" required>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="rabbit">Rabbit</option>
+        <option value="bird">Bird</option>
+        <option value="horse">Horse</option>
+        <option value="reptile">Reptile</option>
+        <option value="small-furry">Small & furry</option>
+        <option value="scales-fins-other">Scales, fins, & other</option>
+      </select>
+    </div>
+    <div>
+      <label for="breed">Breed:</label>
+      <input type="text" id="breed" name="breed" required>
+    </div>
+    <button type="submit">Search</button>
+  </form>
+  
+
+<%- include ("../partials/footer.ejs")

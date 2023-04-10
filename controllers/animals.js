@@ -9,7 +9,7 @@ const axios = require('axios')
 
 router.get('/', (req, res)=>{
     try{
-        res.render('views/animals.ejs')
+        res.render('../views/animals.ejs')
     } catch(err){
         console.log(err)
         res.send(err)
@@ -44,8 +44,9 @@ router.get('/:id', (req, res)=>{
 })
 
 router.get('/users/:userId/animals', (req, res)=>{
-    res.send('look at your favorite animals')
+    res.redirect('./profile')
 })
+
 
 router.get('/users/:userId/animals/:animalId', (req, res)=>{
     res.send('look at a specific favorite animal')

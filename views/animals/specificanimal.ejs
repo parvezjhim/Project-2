@@ -1,20 +1,28 @@
 <%- include("../partials/header.ejs") %>
 
-<div class="animal-photo">
-  <img src="<%= animal.photos[0].large %>">
-</div>
 
-<div class="animal-description">
-  <h1><%= animal.name %></h1>
-  <ul>
-    <li>Age: <%= animal.age %></li>
-    <li>Species: <%= animal.species %></li>
-    <li>Breed: <%= animal.breeds.primary %></li>
-    <li>Description: <%= animal.description %></li>
-    <li>Contact Email: <%= animal.contact.email %></li>
-    <li>Contact Phone: <%= animal.contact.phone %></li>
-    <li>Contact City: <%= animal.contact.address.city %></li>
-    <li>Contact Postcode: <%= animal.contact.address.postcode %></li>
-  </ul>
-
+  <% for(var i = 0; i < animal.length; i++) { %>
+    <% if (i === 0 || i % 3 === 0) { %>
+      <div class="row">
+    <% } %>
+    <div class="animal-photo">
+      <img src="<%= animal[i].photos.large %>">
+    </div>
+    
+    <div class="animal-description">
+      <h1><%= animal[i].name %></h1>
+      <ul>
+        <li>Age: <%= animal[i].age %></li>
+        <li>Species: <%= animal[i].species %></li>
+        <li>Breed: <%= animal[i].breeds.primary %></li>
+        <li>Description: <%= animal[i].description %></li>
+        <li>Contact Email: <%= animal[i].contact.email %></li>
+        <li>Contact Phone: <%= animal[i].contact.phone %></li>
+        <li>Contact City: <%= animal[i].contact.address.city %></li>
+        <li>Contact Postcode: <%= animal[i].contact.address.postcode %></li>
+      </ul>
+    <% if (i === 0 || i % 3 === 0) { %>
+      </div>
+    <% } %>
+  <% } %>
   <%- include("../partials/footer.ejs") %>

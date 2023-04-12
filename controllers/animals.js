@@ -9,38 +9,41 @@ const axios = require('axios')
 
 router.get('/', (req, res)=>{
     try{
-        res.render('../views/animals.ejs')
+        res.render('../views/animals/animals.ejs')
     } catch(err){
         console.log(err)
         res.send(err)
     }
 })
+// API_KEY='WQdoenR5rS0zAP40HzU4ZM8CLm0FI8F2ZoWQ3QzJ50fpPhC2Ad'
 
+// mySecret='Yi49YezgXhDsmJC6inVvqe21EznQ53BXxcAZiqsi'
 router.post('/', async (req, res)=>{
     try {
         const { zipCode, species, breed } = req.body
-        const tokenResponse = await axios.get('https://api.petfinder.com/v2/oauth2/token', {
+        const tokenResponse = await axios.post('https://api.petfinder.com/v2/oauth2/token',  {
           grant_type: 'client_credentials',
           client_id: 'WQdoenR5rS0zAP40HzU4ZM8CLm0FI8F2ZoWQ3QzJ50fpPhC2Ad',
           client_secret: 'Yi49YezgXhDsmJC6inVvqe21EznQ53BXxcAZiqsi'
         })
-    
+        console.log("Here is the token  ", tokenResponse)
         const options = {
           headers: {
             Authorization: `Bearer ${tokenResponse.data.access_token}`
           }
         }
-    
-        const petResponse = await axios.get(`https://api.petfinder.com/v2/animals?type=${species}&breed=${breed}&location=${zipCode}`, options)
-        res.render('animals.ejs', { pets: petResponse.data.animals })
+        console.log("here is th options ", options)
+        const petResponse = await axios.get(`https://api.petfinder.com/v2/animals?type=Dog&breed=Affenpinscher`, options)
+        console.log("Pet Response  ", petResponse)
+        res.render('../views/animals/specificanimal.ejs', { animal: petResponse.data.animals })
       } catch (error) {
         console.log(error)
-        res.render('animals.ejs', { pets: null, error: 'Error getting pets. Please try again.' })
+        res.render('../views/animals/specificanimal.ejs', { animal: null, error: 'Error getting pets. Please try again.' })
       }
     })
     
 router.get('/:id', (req, res)=>{
-    res.render('./specificanimal.ejs')
+    res.render('/animals/specificanimal.ejs')
 })
 
 router.get('/users/:userId/animals', (req, res)=>{
